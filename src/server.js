@@ -3,8 +3,7 @@ import pino from 'pino-http';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { env } from './utils/env.js';
-import { getAllStudents, getStudentById } from './services/students.js';
-import { getAllContacts } from './services/contacts.js';
+import { getAllContacts, getContactById } from './services/contacts.js';
 
 dotenv.config();
 
@@ -30,31 +29,6 @@ export const setupServer = () => {
     });
   });
 
-  app.get('/students', async (req, res) => {
-    const students = await getAllStudents();
-
-    res.status(200).json({
-      data: students,
-    });
-  });
-
-  app.get('/students/:studentId', async (req, res, next) => {
-    const { studentId } = req.params;
-    const student = await getStudentById(studentId);
-
-    // Відповідь, якщо контакт не знайдено
-    if (!student) {
-      res.status(404).json({
-        message: 'Student not found',
-      });
-      return;
-    }
-
-    // Відповідь, якщо контакт знайдено
-    res.status(200).json({
-      data: student,
-    });
-  });
   app.get('/contacts', async (req, res) => {
     const contacts = await getAllContacts();
 
@@ -67,7 +41,6 @@ export const setupServer = () => {
     const { contactId } = req.params;
     const contact = await getContactById(contactId);
 
-    // Відповідь, якщо контакт не знайдено
     if (!contact) {
       res.status(404).json({
         message: 'Contact not found',
@@ -75,9 +48,8 @@ export const setupServer = () => {
       return;
     }
 
-    // Відповідь, якщо контакт знайдено
     res.status(200).json({
-      message: 'Successfully found contact with id {contactId}!',
+      message: `Successfully found contact with id ${contactId}!`,
       data: contact,
     });
   });
