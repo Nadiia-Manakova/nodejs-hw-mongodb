@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import {
   getContactsController,
-  getContactsByIdController,
+  getContactByIdController,
   createContactController,
   deleteContactController,
   upsertContactController,
@@ -21,7 +21,7 @@ router.get('/contacts', ctrlWrapper(getContactsController));
 router.get(
   '/contacts/:contactId',
   isValidId,
-  ctrlWrapper(getContactsByIdController),
+  ctrlWrapper(getContactByIdController),
 );
 router.post(
   '/contacts',
