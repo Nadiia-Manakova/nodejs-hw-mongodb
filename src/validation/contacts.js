@@ -7,9 +7,8 @@ export const createContactSchema = Joi.object({
     'string.max': `Username should have at most {{#limit}} characters`,
     'any.required': 'Username is required',
   }),
-  email: Joi.string().email().required().messages({
+  email: Joi.string().email().messages({
     'string.email': 'Please enter a valid email address',
-    'any.required': 'Email is required',
   }),
   phoneNumber: Joi.string()
     .pattern(/^\+?[0-9]{7,15}$/)
