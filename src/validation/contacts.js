@@ -12,19 +12,18 @@ export const createContactSchema = Joi.object({
     'any.required': 'Email is required',
   }),
   phoneNumber: Joi.string()
-    .pattern(/^\+?[0-9]{10,15}$/)
+    .pattern(/^\+?[0-9]{7,15}$/)
     .required()
     .messages({
       'string.pattern.base':
-        'Phone number must be a valid format and contain 10-15 digits.',
+        'Phone number must be a valid format and contain 7-15 digits.',
       'any.required': 'Phone number is required',
     }),
   contactType: Joi.string()
     .valid('work', 'home', 'personal')
-    .required()
+
     .messages({
       'any.only': 'Contact type must be one of work, home, or personal',
-      'any.required': 'Contact type is required',
     }),
   isFavourite: Joi.boolean(),
 });
@@ -40,13 +39,13 @@ export const updateContactSchema = Joi.object({
     'string.email': 'Please enter a valid email address',
   }),
   phoneNumber: Joi.string()
-    .pattern(/^\+?[0-9]{10,15}$/)
+    .pattern(/^\+?[0-9]{7,15}$/)
     .messages({
       'string.pattern.base':
-        'Phone number must be a valid format and contain 10-15 digits.',
+        'Phone number must be a valid format and contain 7-15 digits.',
     }),
   contactType: Joi.string().valid('work', 'home', 'personal').messages({
     'any.only': 'Contact type must be one of work, home, or personal',
   }),
   isFavourite: Joi.boolean(),
-}).min(1);
+});

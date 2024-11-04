@@ -82,6 +82,9 @@ export const upsertContactController = async (req, res, next) => {
 
 export const patchContactController = async (req, res, next) => {
   const { contactId } = req.params;
+  if (!Object.keys(req.body).length) {
+    return next(createHttpError(400, 'No fields to update provided.'));
+  }
   const result = await updateContact(contactId, req.body);
 
   if (!result) {
