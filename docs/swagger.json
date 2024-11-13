@@ -14,7 +14,7 @@
       "url": "http://localhost:3000"
     },
     {
-      "url": "https://example.com/api/v1"
+      "url": "https://nodejs-hw-mongodb-hw7-hkl3.onrender.com"
     }
   ],
   "tags": [
@@ -175,47 +175,6 @@
         "responses": {
           "204": {
             "description": "Successfully logged out the user! No content returned."
-          },
-          "401": {
-            "$ref": "#/components/responses/401"
-          }
-        }
-      }
-    },
-    "/auth/refresh": {
-      "post": {
-        "tags": [
-          "Auth"
-        ],
-        "summary": "refresh token",
-        "operationId": "refreshToken",
-        "description": "Refresh an access token for an authenticated session.",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Successfully refreshed a session!",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 200
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Successfully refreshed a session!"
-                    }
-                  }
-                }
-              }
-            }
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -556,8 +515,7 @@
                   "name",
                   "phoneNumber",
                   "contactType",
-                  "email",
-                  "userId"
+                  "email"
                 ],
                 "properties": {
                   "name": {
@@ -830,25 +788,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successfully deleted the contact",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 200
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Successfully deleted the contact!"
-                    }
-                  }
-                }
-              }
-            }
+          "204": {
+            "description": "Successfully deleted the contact! No content returned."
           },
           "401": {
             "$ref": "#/components/responses/401"
