@@ -13,8 +13,6 @@ requestBody:
         required:
           - name
           - phoneNumber
-          - contactType
-          - email
         properties:
           name:
             description: "Contact's name"
